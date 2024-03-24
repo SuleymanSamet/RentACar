@@ -1,0 +1,53 @@
+package com.javacourse.springBtk.dataAccess.concretes;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.javacourse.springBtk.dataAccess.abstracts.ActorRepository;
+import com.javacourse.springBtk.entities.concretes.Actor;
+
+import jakarta.persistence.EntityManager;
+
+//jpa veri erişim tekniğiyken standart oluyo hıbernate bunu implemente ediyo hızlı geçişler sağlıyo
+
+@Repository//kullanılan teknolojıye gore bunu istediğine geçirebilirsin otomatık bulur
+public class HibernateActorRepository implements ActorRepository{
+	private EntityManager entityManager;//bu class jpa dan sesion karşılık gelen klass
+	
+	@Autowired//otomatik olarak hibernate enjection yapacak
+	public HibernateActorRepository(EntityManager entityManager) {
+		this.entityManager = entityManager;
+	}
+
+	@Override
+	@Transactional//springden alıcaz aop
+	public List<Actor> getAll() {
+		//şehirleri döndürücez hibernate session ver diyoruz
+		Session session = entityManager.unwrap(Session.class);
+		List<Actor> actors = session.createQuery("from Actor",Actor.class).list();
+		return actors;
+	}
+
+	@Override
+	public void add(Actor actor) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(Actor actor) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Actor actor) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

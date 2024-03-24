@@ -1,0 +1,48 @@
+package kodlama.o.rentACar.business.concretes;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import kodlama.o.rentACar.business.abstracts.BrandService;
+import kodlama.o.rentACar.business.requests.CreateBrandRequest;
+import kodlama.o.rentACar.business.responses.GetAllBrandsResponse;
+import kodlama.o.rentACar.dataAccess.abstracts.BrandRepository;
+import kodlama.o.rentACar.entities.concretes.Brand;
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor
+public class BrandManager implements BrandService{
+	private BrandRepository brandRepository;
+	
+
+	@Override
+	public List<GetAllBrandsResponse> getAll() {
+		
+		List<Brand> brands=brandRepository.findAll();
+		List<GetAllBrandsResponse> allBrandsResponses=new ArrayList<GetAllBrandsResponse>();//boş liste oluşturduk
+		
+		for (Brand brand : brands) {//foreach
+			//analisteyi dolaşırız Brand
+			GetAllBrandsResponse allBrands=new GetAllBrandsResponse();//eleman oluşturduk
+			allBrands.setId(brand.getId());//her seferınde her markanın ıd name set ettik
+			allBrands.setName(brand.getName());
+			allBrandsResponses.add(allBrands);//elemanı al allbrandsresponse ekle
+			
+		}
+		return allBrandsResponses;
+	}
+
+	@Override
+	public void add(CreateBrandRequest createBrandRequest) {
+		// veritabanına kayıt ekleme
+		Brand brand=new Brand();
+		brand.setName(createBrandRequest.getName());
+		
+		this.brandRepository.save(brand);//save içi bizden brand istiyo oyüzden yukarda brand olustururuz
+		
+	}
+
+}

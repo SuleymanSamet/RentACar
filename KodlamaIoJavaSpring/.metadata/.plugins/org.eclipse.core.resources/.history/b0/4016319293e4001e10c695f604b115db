@@ -1,0 +1,24 @@
+package com.javacourse.springBtk.entities.concretes;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data//lombok ile getset metotları
+@AllArgsConstructor//içi dolu constructor
+@NoArgsConstructor//içi boş constructor
+@Entity //veri tabanı nesnesi oldugunu anlatır
+@Table(name="actor") //veritabanına bağlamak istiyoruz burda sen bir veritabanı tablosusun diyoruz
+public class Actor {
+	@Id//id oldunu belirtik
+	@Column(name="actor_id")//column olarak hangi kolona denk geldini belirtik
+	private int id;
+	@Column(name="first_name")
+	private String name;
+	private String lastName;
+
+}

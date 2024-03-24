@@ -1,0 +1,7 @@
+package kodlama.o.rentACar.core.utilities.exceptions;
+
+public class ProblemDetails {
+	String message;
+	
+
+}

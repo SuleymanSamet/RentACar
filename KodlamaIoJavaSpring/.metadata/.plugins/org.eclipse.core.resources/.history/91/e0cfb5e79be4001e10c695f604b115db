@@ -1,0 +1,5 @@
+package com.javacourse.springBtk.business.concretes;
+
+public class ActorManager {
+
+}

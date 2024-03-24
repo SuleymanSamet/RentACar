@@ -1,0 +1,5 @@
+package com.javacourse.springBtk.webApi.controllers;
+
+public class ProductsController {
+
+}

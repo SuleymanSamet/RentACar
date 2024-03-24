@@ -1,0 +1,30 @@
+package kodlama.o.rentACar.business.concretes;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Service;
+
+import kodlama.o.rentACar.business.abstracts.ModelService;
+import kodlama.o.rentACar.business.responses.GetAllBrandsResponse;
+import kodlama.o.rentACar.business.responses.GetAllModelsResponse;
+import kodlama.o.rentACar.dataAccess.abstracts.ModelRepository;
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor
+public class ModelManager implements ModelService{
+	
+	private ModelRepository modelRepository;
+
+	@Override
+	public List<GetAllModelsResponse> getAll() {
+		List<GetAllBrandsResponse> allBrandsResponses=brands.stream()
+				.map(brand->this.modelMapperService.forResponse()
+						.map(brand, GetAllBrandsResponse.class)).collect(Collectors.toList());
+		
+		
+		return allBrandsResponses;
+	}
+
+}

@@ -1,0 +1,37 @@
+package kodlama.o.rentACar.webApi.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import kodlama.o.rentACar.business.abstracts.BrandService;
+import kodlama.o.rentACar.business.requests.CreateBrandRequest;
+import kodlama.o.rentACar.business.responses.GetAllBrandsResponse;
+
+@RestController// Spring Boot'ta RESTful web servisleri oluşturmak için kullanılır.
+@RequestMapping("/api/brands")// Eşleme yolunu tanımlar
+public class BrandsController {
+	private BrandService brandService;
+	//ilgili işlemleri gerçekleştirmek için kullanılan bir servis sınıfına bir referans görevi görür.
+
+	@Autowired
+	public BrandsController(BrandService brandService) {
+		
+		this.brandService = brandService;
+	}
+	
+	@GetMapping("/getall")
+	public List<GetAllBrandsResponse>getAll(){
+		return brandService.getAll();
+	}
+	@PostMapping("/add")
+	public void add(CreateBrandRequest brandRequest) {
+		this.brandService.add(brandRequest);
+	}
+	
+
+}

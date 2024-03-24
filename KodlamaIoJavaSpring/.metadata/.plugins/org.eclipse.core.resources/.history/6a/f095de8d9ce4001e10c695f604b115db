@@ -1,0 +1,19 @@
+package com.javacourse.springBtk.webApi.controllers;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController // bunun restfulapi oldunu belirtmemiz için kullanırız
+public class ActorController {
+	// mvc açılımı=M(model) - V(view) - C(controller) girilen bir adrese istek
+	// göndeririz ürün göster onu ilk karşılayan
+	// controller dır view görüntü demekdir controller view yönlendirir model
+	// datadır data transferi ile yaparız
+	@GetMapping // burda GetMapping("/") burda uygulama sayfamızın ana sayfası ana istek noktası
+				// bura
+	public String get() {
+		return "Laptop";
+
+	}
+
+}

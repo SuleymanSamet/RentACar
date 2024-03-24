@@ -1,0 +1,8 @@
+package kodlama.o.rentACar.core.utilities.exceptions;
+
+import java.util.Map;
+
+public class ValidationProblemDetails extends ProblemDetails{
+	private Map<String, String> validationErrors;
+
+}

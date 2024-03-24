@@ -1,0 +1,58 @@
+package com.javacourse.springBtk.business.concretes;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.javacourse.springBtk.business.abstracts.ActorService;
+import com.javacourse.springBtk.dataAccess.abstracts.ActorRepository;
+import com.javacourse.springBtk.entities.concretes.Actor;
+
+@Service //bu bir iş katmanıdır 
+public class ActorManager implements ActorService{
+	//business dataaccess den hizmet alır aralarında iletişim için abstract kullanırız actorRepository
+	private ActorRepository actorRepository;
+
+	@Autowired
+	public ActorManager(ActorRepository actorRepository) {
+		
+		this.actorRepository = actorRepository;
+	}
+
+	@Override
+	@Transactional
+	public List<Actor> getAll() {
+		// TODO Auto-generated method stub
+		return this.actorRepository.getAll();
+	}
+
+	@Override
+	@Transactional
+	public void add(Actor actor) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	@Transactional
+	public void update(Actor actor) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	@Transactional
+	public void delete(Actor actor) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Actor getById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

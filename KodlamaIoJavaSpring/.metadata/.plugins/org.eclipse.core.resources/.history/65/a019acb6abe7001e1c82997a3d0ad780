@@ -1,0 +1,13 @@
+package kodlama.o.rentACar.business.abstracts;
+
+import java.util.List;
+
+import kodlama.o.rentACar.business.requests.CreateBrandRequest;
+import kodlama.o.rentACar.business.requests.UpdateBrandRequest;
+import kodlama.o.rentACar.business.responses.GetAllBrandsResponse;
+
+public interface BrandService {
+	List<GetAllBrandsResponse> getAll();
+	void add(CreateBrandRequest createBrandRequest);//CreateBrandRequest içinde olan bir name ver dedik
+	void update(UpdateBrandRequest updateBrandRequest);
+}

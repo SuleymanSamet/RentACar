@@ -1,0 +1,5 @@
+package kodlama.o.rentACar.business.responses;
+
+public class GetByIdBrandResponse {
+
+}

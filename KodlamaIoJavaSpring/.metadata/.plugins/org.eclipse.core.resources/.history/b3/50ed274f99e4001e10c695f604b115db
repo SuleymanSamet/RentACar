@@ -1,0 +1,5 @@
+package com.javacourse.springBtk.dataAccess.concretes;
+
+public class HibernateActorRepository {
+
+}
